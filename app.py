@@ -3,7 +3,7 @@ import pickle
 import streamlit as st
 
 # Load your original cleaned dataset (the one used for training)
-car_data = pd.read_csv('/content/clean_car_data.csv')  # or wherever it's saved
+car_data = pd.read_csv('clean_car_data.csv')  # or wherever it's saved
 
 model = pickle.load(open('LinearRegression.pkl', 'rb'))
 
