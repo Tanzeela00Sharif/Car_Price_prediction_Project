@@ -79,6 +79,5 @@ if st.button("🔍 Predict Price"):
     st.markdown(f"""
         <div class="prediction-box">
             💰 Estimated Price: PKR{prediction:,.0f} (PKR)<br>
-            ≈ PKR {prediction_pkr:,.0f}
-        </div>
+            </div>
     """, unsafe_allow_html=True)
