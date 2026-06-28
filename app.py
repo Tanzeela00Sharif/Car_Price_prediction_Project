@@ -71,18 +71,10 @@ if st.button("🔍 Predict Price"):
     fuel_icons = {
         'Petrol': '⛽',
         'Diesel': '🛢️',
-        'CNG': '🌿'
+        'LPG': '🌿'
     }
     icon = fuel_icons.get(fuel_type, '🚗')
     st.markdown(f"<h1 style='text-align:center;'>{icon}</h1>", unsafe_allow_html=True)
-    
-
-    st.markdown(f"""
-        <div class="prediction-box">
-            💰 Estimated Price: ₹{prediction:,.0f} (INR)<br>
-            ≈ PKR {prediction_pkr:,.0f}
-        </div>
-    """, unsafe_allow_html=True)
 
     st.markdown(f"""
         <div class="prediction-box">
