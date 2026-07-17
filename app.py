@@ -6,7 +6,7 @@ import streamlit as st
 st.set_page_config(page_title="Car Price Predictor", page_icon="🚗", layout="centered")
 
 # ----------------------------------------------------------------------
-# Custom CSS — hero banner + form styling (design language from reference)
+# Custom CSS — hero banner + form styling, tuned for dark theme
 # ----------------------------------------------------------------------
 st.markdown("""
     <style>
@@ -16,47 +16,50 @@ st.markdown("""
         font-family: 'Poppins', sans-serif;
     }
 
-    .main {
-        background-color: #f5f7fa;
+    /* Hide Streamlit's default header bar so the hero banner isn't clipped under it */
+    header[data-testid="stHeader"] {
+        background: transparent;
+        height: 0rem;
+    }
+    div[data-testid="stToolbar"] {
+        visibility: hidden;
     }
 
-    /* Remove default top padding so hero banner sits flush at the top */
+    /* Force consistent dark background across the whole app */
+    [data-testid="stAppViewContainer"], .stApp {
+        background-color: #0e1117;
+    }
+
+    /* Remove default top padding, add just enough so hero isn't clipped */
     .block-container {
-        padding-top: 0rem;
+        padding-top: 2rem;
         padding-bottom: 2rem;
     }
 
     /* ---------- HERO BANNER ---------- */
     .hero {
         background: linear-gradient(135deg, #0a0e27 0%, #161b3d 100%);
-        border-radius: 0 0 18px 18px;
-        padding: 2.8rem 2rem;
-        margin: -1rem -1rem 2rem -1rem;
+        border-radius: 14px;
+        padding: 2.2rem 2rem;
+        margin-bottom: 2rem;
         color: white;
         text-align: center;
     }
-    .hero-eyebrow {
-        color: #f5a623;
-        font-weight: 600;
-        font-size: 0.9rem;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        margin-bottom: 0.4rem;
-    }
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 1.9rem;
         font-weight: 800;
-        line-height: 1.2;
+        line-height: 1.3;
         margin: 0;
+        color: #f5f5f5;
     }
     .hero-title .accent {
         color: #f5a623;
     }
     .hero-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 400;
-        opacity: 0.75;
-        margin-top: 0.5rem;
+        color: #c8c9d6;
+        margin-top: 0.6rem;
         letter-spacing: 2px;
         text-transform: uppercase;
     }
@@ -64,27 +67,27 @@ st.markdown("""
     /* ---------- SECTION TITLE ---------- */
     .form-title-wrap {
         text-align: center;
-        margin-bottom: 1.3rem;
+        margin-bottom: 1.5rem;
     }
     .form-title {
         font-weight: 700;
-        font-size: 1.3rem;
+        font-size: 1.25rem;
         letter-spacing: 1px;
-        border-bottom: 2px solid #0a0e27;
+        border-bottom: 2px solid #f5a623;
         padding-bottom: 0.4rem;
-        color: #1f2937;
+        color: #f5f5f5;
     }
 
-    /* ---------- LABELS ---------- */
+    /* ---------- LABELS — light text for dark background ---------- */
     label, .stSelectbox label, .stNumberInput label {
         font-weight: 700 !important;
-        font-size: 0.78rem !important;
+        font-size: 0.75rem !important;
         letter-spacing: 0.5px;
         text-transform: uppercase;
-        color: #1a1a2e !important;
+        color: #b8bac4 !important;
     }
 
-    /* ---------- BUTTON (kept your red accent, just refined) ---------- */
+    /* ---------- BUTTON ---------- */
     .stButton>button {
         background-color: #ff4b4b;
         color: white;
@@ -103,15 +106,15 @@ st.markdown("""
         transform: scale(1.02);
     }
 
-    /* ---------- RESULT BOX (kept your green success style, refined) ---------- */
+    /* ---------- RESULT BOX ---------- */
     .prediction-box {
-        background-color: #e8f8f0;
+        background-color: #10281c;
         border-left: 6px solid #00c853;
         padding: 20px;
         border-radius: 10px;
         font-size: 22px;
         font-weight: bold;
-        color: #00692e;
+        color: #4dffa0;
         margin-top: 20px;
         text-align: center;
     }
@@ -119,13 +122,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------------------------
-# Hero banner markup (replaces the plain st.title)
+# Hero banner — single clear headline as requested
 # ----------------------------------------------------------------------
 st.markdown("""
     <div class="hero">
-        <div class="hero-eyebrow">Sell Your Car At A Best Price</div>
-        <div class="hero-title">MOST-RELIABLE <span class="accent">PRICE</span></div>
-        <div class="hero-subtitle">🚗 Predictor</div>
+        <div class="hero-title">MOST-RELIABLE <span class="accent">USED CAR PRICE</span> PREDICTOR</div>
+        <div class="hero-subtitle">🚗 Get an instant, data-driven price estimate</div>
     </div>
 """, unsafe_allow_html=True)
 
