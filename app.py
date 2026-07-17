@@ -61,8 +61,8 @@ with col2:
 st.write("")
 
 if st.button("🔍 Predict Price"):
-    input_df = pd.DataFrame([[name, company, year, fuel_type, kms_driven]],
-                              columns=['name', 'company', 'year', 'fuel_type', 'kms_driven'])
+    input_df = pd.DataFrame([[company, year, fuel_type, kms_driven]],
+                              columns=['company', 'year', 'fuel_type', 'kms_driven'])
     prediction = model.predict(input_df)[0]
     prediction_pkr = prediction * 2.93
 
