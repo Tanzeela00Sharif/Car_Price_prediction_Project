@@ -52,6 +52,7 @@ st.divider()
 
 col1, col2 = st.columns(2)
 with col1:
+    name=st.st.selectbox("name", sorted(car_data['name'].unique()))
     year = st.number_input("Year", min_value=int(car_data['year'].min()), max_value=int(car_data['year'].max()), value=2015)
     kms_driven = st.number_input("Kilometers Driven", min_value=0, value=50000)
 with col2:
@@ -61,8 +62,8 @@ with col2:
 st.write("")
 
 if st.button("🔍 Predict Price"):
-    input_df = pd.DataFrame([[company, year, fuel_type, kms_driven]],
-                              columns=['company', 'year', 'fuel_type', 'kms_driven'])
+    input_df = pd.DataFrame([[name, company, year, fuel_type, kms_driven]],
+                              columns=['name','company', 'year', 'fuel_type', 'kms_driven'])
     prediction = model.predict(input_df)[0]
     prediction_pkr = prediction * 2.93
 
