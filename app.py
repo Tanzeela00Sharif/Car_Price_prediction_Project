@@ -52,7 +52,6 @@ st.divider()
 
 col1, col2 = st.columns(2)
 with col1:
-    name = st.selectbox("Car Name", sorted(car_data['name'].unique()))
     year = st.number_input("Year", min_value=int(car_data['year'].min()), max_value=int(car_data['year'].max()), value=2015)
     kms_driven = st.number_input("Kilometers Driven", min_value=0, value=50000)
 with col2:
